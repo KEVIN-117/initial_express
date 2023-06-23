@@ -21,10 +21,13 @@ const options = {
     }
   },
 };
+
 app.use(cors(options));
 app.use('/api', productRouter);
 app.use('/api', userRoutes);
-
+app.get('/', (req, res) => {
+  res.send('Hola mi server en express');
+});
 app.use(logError);
 app.use(boomHandler);
 app.use(errorHandler);
