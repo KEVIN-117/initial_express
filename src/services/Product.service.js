@@ -1,4 +1,5 @@
 import { faker } from '@faker-js/faker';
+import Boom from 'boom';
 
 class ProductsService {
   size;
@@ -12,11 +13,12 @@ class ProductsService {
     const limit = this.size || 20;
     for (let i = 0; i < limit; i++) {
       this.products.push({
-        id: i + 1,
+        id: faker.database.mongodbObjectId(),//i + 1,
         name: faker.commerce.productName(),
         price: parseInt(faker.commerce.price(), 10),
         img: faker.image.url(),
         body: faker.commerce.productDescription(),
+        isBlocked: faker.datatype.boolean()
       });
     }
   }
@@ -31,8 +33,8 @@ class ProductsService {
 
   async update(id, newData) {
     const index = this.products.findIndex((item) => item.id == id);
-    if (!index === -1) {
-      throw new Error('Product not found');
+    if (index === -1) {
+      throw Boom.notFound('Product not found');
     }
     const product = this.products[index];
     this.products[index] = {
@@ -47,14 +49,22 @@ class ProductsService {
   }
 
   async findOne(id) {
-    const name = this.getTotal()//esto es de prueba para los middlewares de prueba
-    return this.products.find((item) => item.id == id);
+    //const name = this.getTotal()//esto es de prueba para los middlewares de prueba
+    const product = this.products.find((item) => item.id == id);
+    if(!product){
+      throw Boom.notFound('Product not found');
+    }else if(product.isBlocked){
+      throw Boom.conflict('Product is blocked');
+    }
+    return product
   }
 
   async delete(id) {
     const index = this.products.findIndex((item) => item.id == id);
-    if (!index === -1) return this.products.splice(index, 1);
-    console.log('product not found: ' + id);
+    if (index === -1 && !this.products.find((item) => item.id == id)) {
+      throw Boom.notFound('Product not found');
+    }
+    return this.products.splice(index, 1);
   }
 }
 

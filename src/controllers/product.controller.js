@@ -15,7 +15,7 @@ export const product = async (req, res, next) => {
 
     res.json(productg);
   } catch (err) {
-    next(err);//captura el error de manera explicita para cuando ocurre un error pasara al nexts y ejecutara lso middleware de error
+    next(err); //captura el error de manera explicita para cuando ocurre un error pasara al nexts y ejecutara lso middleware de error
   }
 };
 
@@ -27,26 +27,23 @@ export const create = async (req, res) => {
   res.json(product);
 };
 
-export const updateProduct = async (req, res) => {
-  const { id } = req.params;
-  const body = req.body;
-  const product = productsService.update(id, body);
-
-  // if(!product){
-  //   res.json({"message": "Product not found"})
-  // } //return console.log('product not found');
-  // else
-  res.json(product);
+export const updateProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const body = req.body;
+    const product = await productsService.update(id, body);
+    res.json(product);
+  } catch (err) {
+    next(err); //captura el error de manera explicita para cuando
+  }
 };
 
-export const deleteProduct = async (req, res) => {
-  const { id } = req.params;
-
-  const product = productsService.delete(id);
-
-  // if(!product){
-  //   res.json({"message": "Product not found"})
-  // } //return console.log('product not found');
-  // else
-  res.json(product);
+export const deleteProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const product = await productsService.delete(id);
+    res.json({ message: 'Product deleted successfully', product });
+  } catch (err) {
+    next(err); //captura el
+  }
 };
