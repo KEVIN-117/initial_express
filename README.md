@@ -81,18 +81,18 @@ yarn.lock
     }
     ```
   - Alginos middlewares mas concosidos de Express son:
-    - (CORS)[http://expressjs.com/en/resources/middleware/cors.html]: es una herramienta útil para gestionar las políticas de intercambio de recursos entre dominios diferentes en una aplicación web. Ayuda a evitar los problemas de seguridad relacionados con las solicitudes de recursos desde orígenes no autorizados y permite un intercambio de recursos controlado y seguro entre dominios específicos.
-    - (Morgan)[http://expressjs.com/en/resources/middleware/morgan.html]:  Morgan es un middleware de registro para Express que facilita el registro de información sobre las solicitudes y respuestas HTTP en una aplicación web. Ayuda en el desarrollo, la depuración y el monitoreo de aplicaciones al proporcionar registros claros y detallados de las interacciones del servidor.
+    - [CORS](http://expressjs.com/en/resources/middleware/cors.html): es una herramienta útil para gestionar las políticas de intercambio de recursos entre dominios diferentes en una aplicación web. Ayuda a evitar los problemas de seguridad relacionados con las solicitudes de recursos desde orígenes no autorizados y permite un intercambio de recursos controlado y seguro entre dominios específicos.
+    - [Morgan](http://expressjs.com/en/resources/middleware/morgan.html):  Morgan es un middleware de registro para Express que facilita el registro de información sobre las solicitudes y respuestas HTTP en una aplicación web. Ayuda en el desarrollo, la depuración y el monitoreo de aplicaciones al proporcionar registros claros y detallados de las interacciones del servidor.
 
-    - (Helmet)[https://github.com/helmetjs/helmet]: Helmet nos ayuda a proteger nuestras aplicaciones Express configurando varios encabezados HTTP. ¡No es a prueba de balas de plata, pero puede ayudar!
+    - [Helmet](https://github.com/helmetjs/helmet): Helmet nos ayuda a proteger nuestras aplicaciones Express configurando varios encabezados HTTP. ¡No es a prueba de balas de plata, pero puede ayudar!
 
-    - (Express Debug)[https://github.com/devoidfury/express-debug]: Nos permite hacer debugging de nuestras aplicaciones en Express mediante el uso de un toolbar en la pagina cuando las estamos desarrollando.
+    - [Express Debug](https://github.com/devoidfury/express-debug): Nos permite hacer debugging de nuestras aplicaciones en Express mediante el uso de un toolbar en la pagina cuando las estamos desarrollando.
 
-    - (Express Slash)[https://github.com/ericf/express-slash]: Este middleware nos permite evitar preocuparnos por escribir las rutas con o sin slash al final de ellas.
+    - [Express Slash](https://github.com/ericf/express-slash): Este middleware nos permite evitar preocuparnos por escribir las rutas con o sin slash al final de ellas.
 
-    - (Passport)[https://github.com/jaredhanson/passport]: Passport es un middleware que nos permite establecer diferentes estrategias de autenticación a nuestras aplicaciones
+    - [Passport](https://github.com/jaredhanson/passport): Passport es un middleware que nos permite establecer diferentes estrategias de autenticación a nuestras aplicaciones
 
-    - (Puedes encontrar más middlewares populares en el siguiente enlace)[http://expressjs.com/en/resources/middleware.html]
+    - [Puedes encontrar más middlewares populares en el siguiente enlace](http://expressjs.com/en/resources/middleware.html)
 
 #### Consideraciones para producción
 - para poner una app en la web se deben de tomar ciertas concideraciones en cuneta:
