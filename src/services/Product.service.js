@@ -32,7 +32,7 @@ class ProductsService {
   }
 
   async update(id, newData) {
-    const index = this.products.findIndex((item) => item.id == id);
+    const index = this.products.findIndex((item) => item.id === id);
     if (index === -1) {
       throw Boom.notFound('Product not found');
     }
@@ -50,7 +50,7 @@ class ProductsService {
 
   async findOne(id) {
     //const name = this.getTotal()//esto es de prueba para los middlewares de prueba
-    const product = this.products.find((item) => item.id == id);
+    const product = this.products.find((item) => item.id === id);
     if(!product){
       throw Boom.notFound('Product not found');
     }else if(product.isBlocked){
@@ -60,8 +60,8 @@ class ProductsService {
   }
 
   async delete(id) {
-    const index = this.products.findIndex((item) => item.id == id);
-    if (index === -1 && !this.products.find((item) => item.id == id)) {
+    const index = this.products.findIndex((item) => item.id === id);
+    if (index === -1 && !this.products.find((item) => item.id === id)) {
       throw Boom.notFound('Product not found');
     }
     return this.products.splice(index, 1);
